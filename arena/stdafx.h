@@ -10,6 +10,7 @@
 #include <stdio.h>
 #include <tchar.h>
 #include "draw.hpp"
+#include "menu.hpp"
 
 
 // TODO: reference additional headers your program requires here

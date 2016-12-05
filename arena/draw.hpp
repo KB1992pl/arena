@@ -8,8 +8,10 @@
 class draw {
 public:
 	void set_parameters(uint8_t w, uint8_t h);
-	void draw_map(HANDLE hconsole, int info[]);
+	void draw_map(HANDLE hconsole);
+	void generate();
 private:
+	int *map;
 	uint8_t Width;
 	uint8_t Height;
 	void draw_grass1(HANDLE hconsole);
@@ -17,6 +19,8 @@ private:
 	void draw_grass2(HANDLE hconsole);
 
 	void draw_ground(HANDLE hconsole);
+
+	int randint(int min, int max);
 
 };
 #endif
