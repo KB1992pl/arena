@@ -1,15 +1,19 @@
 #pragma once
 #include "stdafx.h"
 #include <Windows.h>
-#include <string.h>
+#include <string>
 #include <iostream>
 
+using std::string;
 class menu {
 public:
+	HANDLE initialize();
 	void scroll(char);
-private:
-	std::string opcje[2] = { "Generuj mape",
-							"Podaj parametry" };
+	void show();
 
-	uint8_t position;
+private:
+	const static int options=2;
+	const string strings[options];
+
+	uint8_t position=0;
 };
