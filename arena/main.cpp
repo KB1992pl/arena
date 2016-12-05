@@ -6,10 +6,11 @@
 #include <iostream>
 #include "draw.hpp"
 #include <random>
+#include "player.hpp"
 
-
-int randint(int min, int max);
-
+int randint(int min, int max) {
+	return min + (rand() % (int)(max - min + 1));
+}
 
 int main()
 {
@@ -33,10 +34,4 @@ int main()
 	delete console1;
 	cin.get();
     return 0;
-}
-
-
-
-int randint(int min, int max) {
-	return min + (rand() % (int)(max - min + 1));
 }
