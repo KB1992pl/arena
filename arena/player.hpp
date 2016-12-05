@@ -11,6 +11,41 @@ public:
 		int16_t status;  //, st³uczona, z³amana, rozciêta itd.
 
 	};
+public:
+	struct attributes {
+		std::string name;
+		int16_t level;
+	};
+public:
+	struct skills {
+		std::string name;
+		int16_t level;
+	};
+	
+	enum attributes_id
+	{
+		STRENGTH,
+		AGILITY,
+		NIMBLENESS,
+		ENDURANCE,
+		VITALITY,
+		CONSTITUTION
+	};
+
+	enum skills_id
+	{
+		THROWING,
+		MELEE,
+		KICKING,
+		SWORDFIGHTING,
+		AXEFIGHTING,
+		BLUNTFIGHTING,
+		SHIELDUSING,
+		ARMORUSING,
+		BLOCK,
+		DODGE,
+		ATHLETICS
+	};
 
 	enum part_status
 	{
@@ -41,6 +76,8 @@ private:
 	void PickUp(char, int[]) {};
 
 	std::vector<body_part_health> part_health;
+	std::vector<attributes> player_attributes;
+	std::vector<skills> player_skills;
 public:
 	Player::Player() 
 	{
@@ -62,9 +99,17 @@ public:
 
 	void SetHP(int16_t hp, part_id id);
 	void SetStatus(part_status status, part_id id);
+	void SetSkillLevel(int16_t level, skills_id id);
+	void SetAttributeLevel(int16_t level, attributes_id id);
 
 	int16_t GetHP(part_id id) { return part_health[id].hp;  };
 	int16_t GetBodypartStatus(part_id id) { return part_health[id].status; };
 	std::string GetBodyPartName(part_id id) { return part_health[id].name; };
+
+	std::string GetSkillName(skills_id id) { return player_skills[id].name; };
+	std::string GetAttributeName(attributes_id id) { return player_attributes[id].name; };
+
+	int16_t GetSkillLevel(skills_id id) { return player_skills[id].level; };
+	int16_t GetAttributeLevel(attributes_id id) { return player_attributes[id].level; };
 
 };
