@@ -8,7 +8,11 @@
 #include <random>
 #include "menu.hpp"
 #include <string>
+#include "player.hpp"
 
+int randint(int min, int max) {
+	return min + (rand() % (int)(max - min + 1));
+}
 
 int main()
 {
@@ -17,7 +21,6 @@ int main()
 	using namespace std;
 	menu *window = new menu;
 	HANDLE hConsole = window->initialize();
-
 	
 //********* koniec deklaracji sta³ych *************
 	draw *console1 = new draw;
@@ -29,6 +32,3 @@ int main()
 	cin.get();
     return 0;
 }
-
-
-
