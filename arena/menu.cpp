@@ -4,9 +4,9 @@
 #include <string>
 #include <iostream>
 #include <conio.h>
+#include "limit.hpp"
+
 using std::string;
-const static int options = 2;
-uint8_t position = 0;
 
 HANDLE menu::initialize(){
 	HANDLE hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
@@ -16,10 +16,9 @@ HANDLE menu::initialize(){
 
 void menu::show() {
 	using namespace std;
-	string strings[] = { "Generuj mape","Podaj parametry" };
 	for (int i = 0; i < options; ++i) {
-		cout << strings[i];
-		if (i == position) cout << " <--";
+		cout << menu_strings[i];
+		if (i == menu::position) cout << " <--";
 		cout << endl;
 	}
 	char ch = _getch();
@@ -29,8 +28,19 @@ void menu::show() {
 }
 
 void menu::scroll(char ch) {
-	if (ch == 's') ++position;
-	if (ch == 'w') --position;
+	switch (ch) {
+	case 's':
+		++menu::position;
+		break;
+	case 'w':
+		--menu::position;
+		break;
+	default:
+		break;
+	}
+
+	position = StayInLimit(menu::position, options - 1, 0);
+
 	system("cls");
 	show();
 
