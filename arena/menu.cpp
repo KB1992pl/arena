@@ -57,18 +57,7 @@ bool menu::scroll(char ch) {
 			std::cin.get();
 			break;
 		case 1:
-			system("cls");
-			std::cout << "podaj szerokosc mapy: ..\b\b\b";
-			int w;
-			std::cin >> w;
-			std::cin.get();
-			std::cin.clear();
-			std::cout << "podaj wysokosc mapy .. \b\b\b";
-			int h;
-			std::cin >> h;
-			std::cin.get();
-			std::cin.clear();
-			console1.set_parameters(w, h);
+			menu::goto_option();
 			break;
 		case 2:
 			return false;
@@ -76,4 +65,11 @@ bool menu::scroll(char ch) {
 		}
 	system("cls");
 	return true;
+}
+
+void menu::goto_option(){
+	option_menu *option = new option_menu;
+system("cls");
+option->run();
+delete option;
 }

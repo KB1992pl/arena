@@ -33,6 +33,9 @@
     <ClInclude Include="menu.hpp">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="option_menu.hpp">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">
@@ -45,6 +48,9 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="menu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="option_menu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
