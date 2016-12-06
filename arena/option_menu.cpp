@@ -8,13 +8,12 @@
 
 void option_menu::run() {
 	char ch;
-	bool run = true;
-	while (run) {
+	//bool run = true;
+	do {
 		option_menu::show();
 		ch = _getch();
-		run = option_menu::scroll(ch);
-	}
-
+		
+	} while (option_menu::scroll(ch));
 }
 
 void option_menu::show() {

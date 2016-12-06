@@ -20,12 +20,10 @@ HANDLE menu::initialize(){
 
 void menu::run() {
 	char ch;
-	bool run=true;
-	while (run) {
+	do {
 	menu::show();
 	ch = _getch();
-	run = menu::scroll(ch);
-}
+	} while (menu::scroll(ch));
 
 }
 
