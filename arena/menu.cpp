@@ -4,44 +4,76 @@
 #include <string>
 #include <iostream>
 #include <conio.h>
-#include "limit.hpp"
-
+#include "draw.hpp"
 using std::string;
+const static int options = 3;
+uint8_t position = 0;
+draw console1;
+HANDLE hconsole;
 
 HANDLE menu::initialize(){
-	HANDLE hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
-	SetConsoleTitleA("Arena V 0.0.000");
+	hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
+	SetConsoleTitleA("Arena V 0.0.002");
 	return hconsole;
+}
+
+
+void menu::run() {
+	char ch;
+	bool run=true;
+	while (run) {
+	menu::show();
+	ch = _getch();
+	run = menu::scroll(ch);
+}
+
 }
 
 void menu::show() {
 	using namespace std;
+	SetConsoleTextAttribute(hconsole, 15);
+	string strings[] = { "Generuj mape","Podaj parametry", "Wyjdü z gry" };
 	for (int i = 0; i < options; ++i) {
-		cout << menu_strings[i];
-		if (i == menu::position) cout << " <--";
+		cout << strings[i];
+		if (i == position) cout << " <--";
 		cout << endl;
 	}
-	char ch = _getch();
-	scroll(ch);
-
-
+	
 }
 
-void menu::scroll(char ch) {
-	switch (ch) {
-	case 's':
-		++menu::position;
-		break;
-	case 'w':
-		--menu::position;
-		break;
-	default:
-		break;
-	}
-
-	position = StayInLimit(menu::position, options - 1, 0);
-
+bool menu::scroll(char ch) {
+	if (ch == 's')
+		if (position<options-1)++position;
+	if (ch == 'w')
+		if (position>0)--position;
+	if (ch == 'e')
+		switch (position) {
+		case 0:
+			system("cls");
+			console1.generate();
+			console1.draw_map(hconsole);
+			std::cin.get();
+			std::cin.clear();
+			std::cin.get();
+			break;
+		case 1:
+			system("cls");
+			std::cout << "podaj szerokosc mapy: ..\b\b\b";
+			int w;
+			std::cin >> w;
+			std::cin.get();
+			std::cin.clear();
+			std::cout << "podaj wysokosc mapy .. \b\b\b";
+			int h;
+			std::cin >> h;
+			std::cin.get();
+			std::cin.clear();
+			console1.set_parameters(w, h);
+			break;
+		case 2:
+			return false;
+			break;
+		}
 	system("cls");
-	show();
-
+	return true;
 }
