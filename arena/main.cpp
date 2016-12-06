@@ -10,25 +10,14 @@
 #include <string>
 #include "player.hpp"
 
-int randint(int min, int max) {
-	return min + (rand() % (int)(max - min + 1));
-}
 
 int main()
 {
-	const uint8_t Width = 40;
-	const uint8_t Height = 20;
 	using namespace std;
 	menu *window = new menu;
 	HANDLE hConsole = window->initialize();
 	
 //********* koniec deklaracji sta³ych *************
-	draw *console1 = new draw;
-	window->show();
-	//console1->set_parameters(Width, Height);
-	//console1->generate();
-	//console1->draw_map(hConsole);
-	delete console1;
-	cin.get();
+	window->run();
     return 0;
 }
