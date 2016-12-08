@@ -11,6 +11,7 @@
 #include <tchar.h>
 #include "draw.hpp"
 #include "menu.hpp"
+#include "option_menu.hpp"
 
 
 // TODO: reference additional headers your program requires here

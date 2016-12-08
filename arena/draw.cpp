@@ -30,10 +30,11 @@ uint8_t Height = 0;
 	void draw::set_parameters(uint8_t w, uint8_t h) {
 		Width = w;
 		Height = h;
-		map = new int[w*h];
+		
 	}
 
 	void draw::generate() {
+		map = new int[Width*Height];
 		for (int h = 0; h < Height; ++h) {
 			for (int w = 0; w < Width; ++w) {
 				map[w+Height*h] = randint(0, 2);
