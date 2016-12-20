@@ -4,11 +4,13 @@
 #include <Windows.h>
 #include <string>
 #include <iostream>
+#include "draw.hpp"
 
 using std::string;
 class option_menu {
 public:
 	void run();
+	void set_draw_handle(draw*);
 
 
 private:
@@ -18,4 +20,5 @@ private:
 	const string strings[options];
 	uint8_t position = 0;
 	HANDLE hconsole;
+	draw *console;
 };

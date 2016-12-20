@@ -17,7 +17,7 @@ private:
 	void goto_option();
 	const static int options=3;
 	const string strings[options];
-	draw console1;
+	draw *_console;
 	uint8_t position=0;
 	HANDLE hconsole;
 };

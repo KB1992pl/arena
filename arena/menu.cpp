@@ -8,12 +8,14 @@
 using std::string;
 const static int options = 3;
 uint8_t position = 0;
-draw console1;
 HANDLE hconsole;
+
 
 HANDLE menu::initialize(){
 	hconsole = GetStdHandle(STD_OUTPUT_HANDLE);
 	SetConsoleTitleA("Arena V 0.0.002");
+	_console = new draw();
+	//this->_console = new draw();
 	return hconsole;
 }
 
@@ -48,9 +50,8 @@ bool menu::scroll(char ch) {
 		switch (position) {
 		case 0:
 			system("cls");
-			console1.generate();
-			console1.draw_map(hconsole);
-			std::cin.get();
+			_console->generate();
+			_console->draw_map(hconsole);
 			std::cin.clear();
 			std::cin.get();
 			break;
@@ -67,6 +68,8 @@ bool menu::scroll(char ch) {
 
 void menu::goto_option(){
 	option_menu *option = new option_menu;
+	//draw &adress = console1;
+	option->set_draw_handle(_console);
 system("cls");
 option->run();
 delete option;
